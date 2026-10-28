@@ -6,13 +6,14 @@ import { getDatabase } from "firebase/database";
 
 // Configuração do seu projeto Firebase
 const firebaseConfig = {
-  apiKey: "COLE_AQUI_API_KEY",
-  authDomain: "COLE_AQUI_AUTH_DOMAIN",
-  databaseURL: "COLE_AQUI_DATABASE_URL",
-  projectId: "COLE_AQUI_PROJECT_ID",
-  storageBucket: "COLE_AQUI_STORAGE_BUCKET",
-  messagingSenderId: "COLE_AQUI_MESSAGING_SENDER_ID",
-  appId: "COLE_AQUI_APP_ID",
+  apiKey: "AIzaSyDbxknmDEL1gIhsBPw6nXOK7qY8LmviAIM",
+  authDomain: "atividade-6e64d.firebaseapp.com",
+  databaseURL: "https://atividade-6e64d-default-rtdb.firebaseio.com",
+  projectId: "atividade-6e64d",
+  storageBucket: "atividade-6e64d.firebasestorage.app",
+  messagingSenderId: "292163477104",
+  appId: "1:292163477104:web:994f60ae6662204019deb5",
+  measurementId: "G-JHRQR5QWJV"
 };
 
 // Evita inicializar o Firebase mais de uma vez
