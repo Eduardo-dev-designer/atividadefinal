@@ -1,0 +1,201 @@
+# PROMPT COMPLETO — APLICATIVO ADIVINHA NÚMERO
+
+Desenvolva um aplicativo mobile chamado **Adivinha Número**, utilizando TypeScript, React Native, Expo e Firebase.
+
+## 1. Objetivo do aplicativo
+
+O aplicativo deve ser um jogo em que o jogador precisa adivinhar um número sorteado aleatoriamente pelo sistema. O número deve estar entre 1 e 100.
+
+O projeto deve funcionar no Android, utilizando o comando `npm run android`, e seguir o padrão de desenvolvimento com Expo, React Native e TypeScript.
+
+## 2. Funcionamento do jogo
+
+O aplicativo deve apresentar uma tela inicial com o título “Adivinha Número”.
+
+Na tela principal, o jogador deve informar seu nickname antes de começar a partida.
+
+Após informar o nickname e pressionar o botão para iniciar, o sistema deve:
+
+- Sortear um número aleatório entre 1 e 100.
+- Permitir que o jogador informe seus palpites.
+- Contabilizar a quantidade de tentativas realizadas.
+- Informar se o número sorteado é maior ou menor que o palpite.
+- Exibir dicas coloridas: verde quando o número sorteado for maior que o palpite e vermelho quando for menor.
+- Identificar quando o jogador acertar o número.
+- Exibir uma mensagem de vitória com o nickname e a quantidade de tentativas utilizadas.
+- Salvar o resultado da partida no Firebase para utilização no ranking.
+
+O jogador deve informar um nickname obrigatório. O aplicativo não deve permitir iniciar uma partida com o campo vazio.
+
+Os palpites devem ser números inteiros entre 1 e 100. Caso o usuário informe um valor inválido, o aplicativo deve apresentar uma mensagem de alerta.
+
+Após vencer, o jogador deve poder iniciar uma nova partida por meio de um botão “Jogar novamente”.
+
+## 3. Ranking dos jogadores
+
+O aplicativo deve possuir uma tela de ranking com os resultados das partidas salvos no Firebase.
+
+Cada resultado deve conter:
+
+- Nickname do jogador.
+- Quantidade de tentativas.
+- Número sorteado.
+- Data e hora do resultado.
+
+Os resultados devem ser registrados no banco de dados e consultados para exibição no ranking.
+
+A tela principal deve possuir um link ou botão “Ver ranking dos jogadores”, que permita navegar para a tela de ranking utilizando o Expo Router.
+
+## 4. Tecnologias obrigatórias
+
+Utilizar:
+
+- TypeScript.
+- React Native.
+- Expo.
+- Expo Router para navegação.
+- Firebase para armazenamento dos resultados.
+- Firebase Realtime Database para salvar e consultar os resultados, mantendo a configuração consistente em todo o projeto.
+- Firebase Authentication somente quando necessário para a funcionalidade implementada.
+
+O aplicativo deve ser desenvolvido em arquivos `.tsx` e `.ts`, conforme a função de cada arquivo.
+
+## 5. Configuração do Firebase
+
+Criar ou corrigir o arquivo `firebaseConfig.ts` para inicializar o Firebase corretamente.
+
+A configuração deve utilizar os métodos modulares do Firebase, incluindo:
+
+- `initializeApp`
+- `getApp`
+- `getApps`
+- `getAuth`
+- `getFirestore`
+- `getDatabase`
+
+A inicialização deve evitar criar várias instâncias do Firebase durante o desenvolvimento.
+
+As credenciais devem ser obtidas no Firebase Console, nas configurações do projeto, em “Seus apps”, selecionando o aplicativo Web.
+
+Não inventar credenciais e não deixar os valores de exemplo como `COLE_AQUI_API_KEY` no projeto final funcional.
+
+Caso seja necessária persistência de autenticação no React Native, verificar a compatibilidade entre a versão instalada do Firebase, o Expo e o método `getReactNativePersistence`.
+
+## 6. Organização dos arquivos
+
+Organizar o projeto de maneira clara e compatível com o Expo Router.
+
+Estrutura sugerida:
+
+adivinha-numero/
+- app/ ou src/app/
+  - _layout.tsx
+  - index.tsx
+  - ranking.tsx
+- src/services/
+  - resultadosFirebase.ts
+- src/theme.ts
+- firebaseConfig.ts
+- app.json
+- package.json
+- tsconfig.json
+
+Escolher uma única estrutura de rotas compatível com a configuração do Expo Router. Não manter duas pastas de rotas concorrentes, como `app/` e `src/app/`, sem verificar qual delas está sendo utilizada.
+
+Ajustar os caminhos dos imports de acordo com a localização real dos arquivos.
+
+## 7. Tela principal
+
+O arquivo `index.tsx` deve apresentar uma interface organizada e visualmente agradável, contendo:
+
+- Título “Adivinhe o número”.
+- Descrição do jogo.
+- Campo para nickname.
+- Botão “Começar partida”.
+- Identificação do jogador durante a partida.
+- Contador de tentativas.
+- Campo para digitar o palpite.
+- Botão “Conferir palpite”.
+- Área de dicas coloridas.
+- Mensagem de vitória.
+- Indicador de salvamento do resultado.
+- Botão “Jogar novamente”.
+- Link para o ranking.
+- Texto explicando o significado das dicas verdes e vermelhas.
+
+Manter o código em React Native, utilizando componentes como `View`, `Text`, `TextInput`, `Pressable` e `ScrollView`, sem utilizar elementos HTML de páginas web.
+
+## 8. Navegação
+
+Configurar o Expo Router corretamente.
+
+O arquivo `_layout.tsx` deve registrar as telas principal e de ranking.
+
+O botão de ranking deve navegar para a rota `/ranking`.
+
+Verificar se a tela principal está sendo exibida corretamente no Android, sem mostrar apenas o título do aplicativo ou uma tela vazia.
+
+## 9. Serviço do Firebase
+
+O arquivo `resultadosFirebase.ts` deve conter as funções necessárias para:
+
+- Salvar os resultados das partidas.
+- Consultar os resultados armazenados.
+- Atualizar a tela de ranking quando os dados forem alterados, se for utilizada uma consulta em tempo real.
+- Tratar erros de conexão e de configuração do Firebase.
+
+Os nomes e os tipos dos dados devem ser consistentes entre a tela do jogo, o serviço e a tela de ranking.
+
+## 10. Correção de erros
+
+Verificar cuidadosamente:
+
+- Imports sublinhados em vermelho no VS Code.
+- Compatibilidade das versões do Firebase e do Expo.
+- Caminhos incorretos de arquivos.
+- Erros de TypeScript.
+- Erros de inicialização do Firebase.
+- Configuração do Expo Router.
+- Dependências ausentes no `package.json`.
+- Problemas de acesso ao Realtime Database.
+- Regras de segurança do Firebase.
+- Tela principal vazia ou que mostra apenas o título.
+
+Não resolver um erro substituindo indiscriminadamente códigos sem verificar a mensagem apresentada. Explicar a causa e fornecer o código completo corrigido do arquivo afetado.
+
+## 11. Instalação e execução
+
+O projeto deve seguir o fluxo de criação de um projeto Expo:
+
+1. Criar uma pasta para os projetos, por exemplo, `C:\projetos\`.
+2. Criar o aplicativo utilizando `npx create-expo-app@latest`.
+3. Entrar na pasta do projeto.
+4. Executar `npm run reset-project`, quando apropriado ao modelo utilizado.
+5. Instalar as dependências necessárias.
+6. Configurar o Firebase com as credenciais reais do projeto.
+7. Executar `npx expo start -c` para limpar o cache.
+8. Executar `npm run android`.
+
+Conferir os scripts e as versões das dependências antes de orientar a execução.
+
+## 12. Referências e restrições
+
+Utilizar como referência de organização e configuração o repositório:
+
+https://github.com/IgorBandasz/aula_banco_mobile
+
+Considerar também o repositório do projeto:
+
+https://github.com/Eduardo-dev-designer/atividadefinal
+
+Usar os repositórios para compreender o padrão de configuração, sem copiar indiscriminadamente seus arquivos ou substituir o código original sem necessidade.
+
+O arquivo `banco1-main.zip` foi fornecido como referência de código e formatação. Utilizá-lo como referência, sem copiar os nomes dos arquivos do projeto de referência.
+
+## 13. Resultado esperado
+
+Entregar um projeto completo, organizado e funcional, com código TypeScript, tela principal, tela de ranking, navegação e integração com Firebase.
+
+Fornecer os códigos completos dos arquivos necessários, indicar onde cada arquivo deve ficar e explicar como instalar, configurar e executar o aplicativo no Android.
+
+Priorizar correções que mantenham a estrutura do projeto e evitar alterações desnecessárias. Não afirmar que o Firebase está funcionando sem confirmar que as credenciais reais e as regras do banco de dados estão configuradas corretamente.
